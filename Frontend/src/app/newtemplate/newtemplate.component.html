@@ -1,0 +1,88 @@
+<header class="mb-3 mt-4">
+        <h1 class="my-0">Detail View</h1>
+        <hr class="mb-0 mt-3">
+        </header>
+        <form>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="example-block">
+                        <div class="form-group">
+                            <label for="templateNameInput">Select Template</label>
+                            <input id="templateNameInput" class="form-control" type="text" disabled [value]="templateName">
+                            </div>
+                            <div class="form-group">
+                                <label for="programNameInput">Program Name</label>
+                                <select id="programNameInput" class="form-control" multiple>
+                                    <option *ngFor="let item of programName">{{item}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ownerGroupInput">Owner Group</label>
+                                <input id="ownerGroupInput" class="form-control" type="text" disabled [value]="ownerGroup" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="createrInput">Creater</label>
+                                    <input id="createrInput" class="form-control" type="text" disabled [value]="creater" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ownerInput">Owner</label>
+                                        <select id="ownerInput" class="form-control" multiple>
+                                            <option *ngFor="let item of owner">{{item}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="categoryNameInput">Category</label>
+                                        <input id="categoryNameInput" class="form-control" name="categoryNameInput" type="text"  [(ngModel)]="categoryName"  >
+                                        <ul class="list-group bottommargin">
+                                            <li class="list-group-item" *ngFor="let item of categoryNameA; let i = index" (click)="categoryClicked(item, i)">{{item}}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="areaNameInput">Area</label>
+                                        <input id="areaNameInput" class="form-control" name="areaNameInput" type="text"  [(ngModel)]="areaName"  >
+                                        <ul class="list-group bottommargin">
+                                            <li class="list-group-item" *ngFor="let item of areaNameA; let i = index" (click)="areaClicked(item, i)">{{item}}</li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-8" >
+                                    <div class="form-group">
+                                            <label for="programNameInput">Assignee List</label>
+                                            <select id="programNameInput" class="form-control" multiple>
+                                                <option *ngFor="let item of assigneeList">{{item}}</option>
+                                            </select>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="creationDate" >Creation Date</label>
+                                        <input id="creationDate" class="form-control" type="date" [value]="createdAt">
+                                        </div>
+                                            <div class="form-group">
+                                                <label for="topicHeadingInput">Topic Heading</label>
+                                                <input id="topicHeadingInput" class="form-control" name="topicHeadingInput" type="text"  [(ngModel)]="topicHeading"  >
+                                                <ul class="list-group bottommargin">
+                                                    <li class="list-group-item" *ngFor="let item of topicHeadingA; let i = index" (click)="topicheadingClicked(item, i)">{{item}}</li>
+                                                </ul>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label  for="descriptionInput">Template Description</label>
+                                                <textarea id="descriptionInput" class="form-control" rows="5">{{templateDescription}}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="mentorInput">Mentor</label>
+                                                <select id="mentorInput" class="form-control">
+                                                    <option *ngFor="let item of mentorsA">{{item}}</option>
+                                                </select>
+                                            </div>
+                                            </div>
+                                            
+
+
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="offset-sm-2 col-sm-10">
+                                                <button class="btn btn-primary" type="button" (click)="backToSummaryPage()">Back</button>
+                                            </div>
+                                        </div>
+                                    </form>

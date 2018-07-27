@@ -1,0 +1,74 @@
+<h1>
+  Assign Template
+</h1>
+
+<hr>
+
+<div class="container">
+  <form >
+    <div class="row">      
+      <div class="col-4">        
+          <div class="form-group">
+            <label for="exampleSelect1">Select Template</label>
+            <select id="exampleSelect1" class="form-control" #templateName>
+              <option value=-1>Please select template</option>
+              <option *ngFor="let item of templateNames; let i of index" value="{{i}}">{{item}}</option>
+            </select>
+        </div>        
+      </div>
+      <div class="col-3">        
+        <div class="form-group">
+          <label for="exampleSelect1">Select Assignee</label>
+          <select id="exampleSelect1" class="form-control" #assigneeName>
+              <option value=-1>Please select Assignee</option>
+              <option *ngFor="let item of userNames; let i of index" value="{{i}}">{{item}}</option>
+          </select>
+        </div>        
+      </div>
+      <div class="col-5">
+        <div class="form-group">
+            <label for="joiningDateInput" >Joining Date</label>            
+            <input id="joiningDateInput" class="form-control" type="date" value="2018-05-31" #joiningDate>           
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-3 offset-6">
+        <button class="btn btn-primary>" (click)="getTopics(templateName.value)" >Get Topics</button>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Topic Name</th>
+                <th>Due Date</th>
+            </tr>
+        </thead>
+        <tbody #tableContent>
+            <tr *ngFor="let item of topicHeadings; let i = index" >
+                <th scope="row">{{i+1}}</th>
+                <td>{{item.HeadingName}}</td>
+                <td><input id="creationDate" class="form-control" type="date" [name]="item" [(ngModel)]="topicHeadings[i].dueDate"></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="row">
+      <div class="col-2 offset-4">
+        <button class="btn btn-primary" (click)="onSubmit(templateName.value, assigneeName.value, joiningDate.value, tableContent.values )" >Submit </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="container" *ngIf="showAlert">
+    <div class="row">
+      <div class="col-12">
+          <ngb-alert [type]="alertType.type" (close)="closeAlert()">{{alertType.message}}</ngb-alert>
+      </div>
+    </div>
+  </div>

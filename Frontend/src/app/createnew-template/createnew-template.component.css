@@ -1,0 +1,13 @@
+.getscroll { 
+    height:150px;
+    overflow: hidden;
+    overflow-y:scroll;
+}
+
+.rightmargin {
+    margin-right: 10px;
+}
+
+.bottommargin {
+    margin-bottom: 5px;
+}

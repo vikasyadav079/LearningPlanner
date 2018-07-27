@@ -1,0 +1,119 @@
+<header class="mb-3 mt-4">
+    <h1 class="my-0">Detail View</h1>
+    <hr class="mb-0 mt-3">
+</header>
+
+<form>
+<div class="row">
+    <div class="col-md-4">
+                    <div class="example-block">
+                        
+                            <div class="form-group">
+                                <label for="templateName">Template Name</label>
+                                <input id="templateName" class="form-control" type="text" name="templateName" [(ngModel)]="currentTemplateO.templateName" >
+                            </div>
+                            <div class="form-group">
+                                <label for="programNameInput">Program Name</label>
+                                <input id="programNameInput" class="form-control" name="programNameInput"  [(ngModel)]="programO" type="text"> 
+                                <ul class="list-group bottommargin" >
+                                    <li class="list-group-item" *ngFor="let item of currentTemplateO.program" (click)="currentProgram(item)"> {{item}}</li>
+                                </ul>
+                                <div class="inline">
+                                        <button class="btn btn-primary rightmargin" (click)="addProgram()" >Add</button>
+                                        <button class="btn btn-primary"  (click)="deleteProgram()">Delete</button>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="ownerGroup">Owner Group</label>
+                                <select id="ownerGroup" class="form-control" name="ownerGroup" [(ngModel)]="currentTemplateO.ownerGroup">
+                                    <option *ngFor="let item of ownerGroupList" [ngValue]="item">{{item}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ownerNameInput">Owners</label>
+                                <input id="ownerNameInput" class="form-control" name="ownerNameInput"  [(ngModel)]="ownerO" type="text"> 
+                                <ul class="list-group bottommargin" >
+                                    <li class="list-group-item" *ngFor="let item of currentTemplateO.owner" (click)="currentOwner(item)"> {{item}}</li>
+                                </ul>
+                                <div class="inline">
+                                        <button class="btn btn-primary rightmargin" (click)="addOwner()" >Add</button>
+                                        <button class="btn btn-primary"  (click)="deleteOwner()">Delete</button>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="categoryNameInput">Category</label>
+                                <input id="categoryNameInput" class="form-control" name="categoryNameInput" [(ngModel)]="categoryO" type="text"  >
+                                <ul class="list-group bottommargin" >
+                                    <li class="list-group-item" *ngFor="let item of currentTemplateO.category" (click)="selectCurrentCategory(item)" >{{item.categoryName}}</li>
+                                </ul>
+                            </div>
+                            <div class="form-group">
+                                <label for="areaTextAreaInput">Area</label>
+                                <textarea id="areaTextAreaInput" class="form-control" rows="2"  [(ngModel)]="areaO" name="areaTextAreaInput">Area Name</textarea>
+                                <ul class="list-group bottommargin" *ngIf="isCurrentCategorySelected" >
+                                    <li class="list-group-item" *ngFor="let item of areaSchemaOA" (click)="selectCurrentArea(item)">{{item.areaName}}</li>
+                                </ul>
+                            </div>
+                            <div class="form-group">
+                                <label for="topicHeadingInput">Topic Heading</label>
+                                <input id="topicHeadingInput" class="form-control" name="topicHeadingInput" type="text"  [(ngModel)]="topicHeadingO"  >
+                                <ul class="list-group bottommargin" *ngIf="isCurrentCategorySelected && isCurrentAreaSelected">
+                                    <li class="list-group-item" *ngFor="let item of areaDetailsOA; let i = index" (click)="selectTopicHeading(item)">{{item.topicHeading}}</li>
+                                </ul>
+                            </div>                                             
+                        
+                    </div>
+      </div>
+      <div class="col-md-8" >
+          <div class="form-group row">
+              <label  for="topicDescriptionInput">Topic Description</label>              
+              <textarea id="topicDescriptionInput" class="form-control" rows="3" name="topicDescriptionInput" [(ngModel)]="topicDescriptionO" ></textarea>
+          </div> 
+          <div class="form-group">
+            <label for="mentorNameInput">Mentor</label>
+            <input id="mentorNameInput" class="form-control" name="mentorNameInput"  [(ngModel)]="mentorO" type="text"> 
+            <ul class="list-group bottommargin" >
+                <li class="list-group-item" *ngFor="let item of currentMentorArray" (click)="currentMentor(item)"> {{item}}</li>
+            </ul>
+            <div class="inline">
+                    <button class="btn btn-primary rightmargin" (click)="addMentor()" >Add</button>
+                    <button class="btn btn-primary"  (click)="deleteMentor()">Delete</button>
+            </div>
+        </div>    
+        <div class="form-group">
+            <label for="docLocNameInput">Documents Location</label>
+            <input id="docLocNameInput" class="form-control" name="docLocNameInput"  [(ngModel)]="docLocationO" type="text"> 
+            <ul class="list-group bottommargin" >
+                <li class="list-group-item" *ngFor="let item of currentDocLocationArray" (click)="currentDocLocation(item)"> {{item}}</li>
+            </ul>
+            <div class="inline">
+                    <button class="btn btn-primary rightmargin" (click)="addDocLocation()" >Add</button>
+                    <button class="btn btn-primary"  (click)="deleteDocLocation()">Delete</button>
+            </div>
+        </div>         
+          <div class="form-group row">
+            <label  for="templatedescriptionInput">Template Description</label>              
+            <textarea id="templatedescriptionInput" class="form-control" rows="3" name="templatedescriptionInput" [(ngModel)]="currentTemplateO.templateDescription" ></textarea>
+        </div> 
+      </div>
+</div>
+<div class="form-group row">
+    <div class="offset-sm-2 col-sm-10">
+        <button class="btn btn-primary" type="submit" (click)="saveToCategory()">Save</button>
+        <button class="btn btn-secondary"  (click)="resetCategory()">Cancel</button>
+        <button class="btn btn-primary" type="submit" (click)="saveandsubmit()">Save and Submit</button>
+    </div>
+</div>
+</form>
+
+<div class="container" *ngIf="showAlert">
+    <div class="row">
+        <div class="col-12">
+            <ngb-alert [type]="alertType.type" (close)="closeAlert()">
+                <p >{{alertType.message}}</p>
+            </ngb-alert>
+        </div>
+    </div>
+</div>

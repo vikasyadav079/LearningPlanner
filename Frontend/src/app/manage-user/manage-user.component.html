@@ -1,0 +1,132 @@
+<ngb-tabset>
+    <ngb-tab title="New User">
+      <ng-template ngbTabContent>
+        <hr>
+        <div class="container">
+          <div class="row">
+              <form [formGroup]="adminRegistrationForm" (ngSubmit)="formSubmit(adminRegistrationForm.value)">
+                  <div class="form-group">
+                      <label for="userName">User Name</label>
+                      <input id="userName" class="form-control" type="text" placeholder="Enter user name" formControlName="username">
+                      <div *ngIf="Username.invalid&&(Username.dirty||Username.touched)" class="alert alert-danger">
+                          <div *ngIf='Username.errors.required'>
+                            User name is required 
+                          </div>
+                      </div>
+                      
+                  </div>
+                  
+                  <div class="form-group">
+                      <label for="passwordInput">Password</label>
+                     <input id="passwordInput" class="form-control" type="password" placeholder="Password" formControlName="password">
+                     <div *ngIf="Password.invalid&&(Password.dirty||Password.touched)" class="alert alert-danger">
+                        <div *ngIf='Password.errors.required'>
+                          Password is required 
+                        </div>
+                    </div>                      
+                  </div>
+                  <div class="form-group">
+                      <label for="emailInput">Email</label>
+                      <input id="emailInput" class="form-control" type="email" placeholder="Enter email" formControlName="email">
+                      <div *ngIf="Email.invalid&&(Email.dirty||Email.touched)" class="alert alert-danger">
+                          <div *ngIf='Email.errors.required'>
+                            Email is required 
+                          </div>
+                      </div>                  
+                    </div>
+                  <div class="form-group">
+                      <label for="selectRole">Select Role</label>
+                      <select id="selectRole" class="form-control" formControlName="selectRole">
+                          <option>Admin</option>
+                          <option>SubAdmin</option>
+                          <option>User</option>
+                      </select>
+                      <div *ngIf="SelectRole.invalid&&(SelectRole.dirty||SelectRole.touched)" class="alert alert-danger">
+                          <div *ngIf='SelectRole.errors.required'>
+                            Role is required 
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="isActive">Is Active</label>
+                      <select id="isActive" class="form-control" formControlName="isActive">
+                          <option>True</option>
+                          <option>False</option>
+                      </select>
+                      <div *ngIf="IsActive.invalid&&(IsActive.dirty||IsActive.touched)" class="alert alert-danger">
+                          <div *ngIf='IsActive.errors.required'>
+                            Activation is required 
+                          </div>
+                      </div>
+                  </div>
+                  <button class="btn btn-primary"  [disabled]="adminRegistrationForm.invalid" type="submit">Submit</button>
+                </form>
+            </div>
+          </div>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Manage Existing User">
+      <ng-template ngbTabContent>
+       <hr>
+       <div class="container">
+         <div class="row">     
+             
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th *ngFor="let item of admintableheding">{{item}}</th>
+                        <th>Edit/Cancel</th>
+                        <th>Save</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let item of adminRegFormAO; let i =  index" >
+                      <tr *ngIf="isEditable[i]; else notEditable" #myValue >
+                          <th scope="row">{{i+1}}</th>
+                          <td>{{item.username}} </td>
+                          <td>{{item.email}}</td>
+                          <td>{{item.role}}</td>
+                          <td>{{item.created_at}}</td>
+                          <td>{{item.updated_at}}</td>
+                          <td>{{item.isActive}}</td>
+                          <td>
+                            <button class="btn btn-primary custompaddingright" (click)="editit(i)">{{edit_cancel[i]}}</button>
+                          </td>
+                          <td>
+                              <button class="btn btn-primary custompaddingright" disabled>Save</button>
+                          </td>
+                        </tr>
+
+                      <ng-template #notEditable>    
+                            <tr id="{{i}}" #myValue>
+                                <th scope="row">{{i+1}}</th>
+                                <td name="username" contenteditable='true'>{{item.username}}</td>
+                                <td name="email" contenteditable='true'>{{item.email}}</td>
+                                <td name="role" contenteditable='true'>{{item.role}}</td>
+                                <td class="uneditable">{{item.created_at}}</td>
+                                <td class="uneditable">{{item.updated_at}}</td>
+                                <td name="isActive" contenteditable='true'>{{item.isActive}}</td>
+                                <td ><button class="btn btn-primary custompaddingright" (click)="editit(i)">{{edit_cancel[i]}}</button></td>
+                                <td>
+                                    <button  id="{{i}}" class="btn btn-primary custompaddingright" (click)="saveit(item,i, myValue)">Save</button>
+                                </td>
+                            </tr>         
+                       </ng-template>
+                    </ng-container>                  
+                </tbody>
+            </table> 
+         </div>
+       </div>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+
+  <div class="container" *ngIf="showAlert">
+    <div class="row">
+      <div class="col-12">
+          <ngb-alert [type]="alertType.type" (close)="closeAlert()">{{alertType.message}}</ngb-alert>
+      </div>
+    </div>
+  </div>
+  

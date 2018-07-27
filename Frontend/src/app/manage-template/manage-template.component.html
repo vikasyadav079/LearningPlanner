@@ -1,0 +1,119 @@
+<h1> Summary </h1>
+<hr>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th *ngFor="let item of tableheadings">{{item}}</th>
+            <th>Detail View</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let itembody of tableBody; let i = index ">
+            <th scope="row">{{i+1}}</th>
+            <td>{{itembody.name}}</td>
+            <td>{{itembody.created_at}}</td>
+            <td>{{itembody.updated_at}}</td>            
+            <td class="customfitcell">   
+                <ng-container *ngFor="let item of assigneeList">             
+                    <ul class="list-group customfitcell" >                        
+                        <li class="list-group-item " *ngIf="(item.TemplateName === itembody.name)" >{{item.AssigneeName}}</li>                        
+                    </ul>     
+                </ng-container>           
+            </td>
+            
+            <td >{{itembody.owner_group}}</td>
+            <td class="customfitcell">
+                <ul class="list-group customfitcell">
+                    <li class="list-group-item " *ngFor="let owner of itembody.owner">{{owner}}</li>
+                </ul>
+            </td>
+            <td>{{itembody.description}}</td>
+            <td>
+                <button class="btn btn-primary" value="Detail" (click)="detailsView(itembody)">Detail</button>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+
+<div class="container" >
+    <div class="row">
+        <div class="col-2">
+            <button class="btn btn-primary" (click)="newTemplate()">New Template</button>
+        </div>
+        <div class="col-2">
+            <button class="btn btn-primary" (click)="assignTemplate()">Assign Template</button>
+        </div>
+        <div class="col-3">
+            <button class="btn btn-primary" (click)="deleteTemplate()">{{isDeleteTemplate}}</button>
+        </div>
+        <div class="col-3">
+            <button class="btn btn-primary" (click)="viewStatus()">{{viewAssigneeStatus}}</button>
+        </div>
+        <div class="col-2">
+            <button class="btn btn-primary" (click)="editTemplate()">{{modifyTemplateString}}</button>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<form *ngIf="isDeleteO">
+    <div class="form-group">
+            <h3 for="exampleSelect2">Select Template</h3>
+            <select id="exampleSelect2" class="form-control" multiple>
+                <option *ngFor="let item of templateNameForAssigneeName; let i of index" value="{{i}}" (click)="selectTemplateToDelete(item)">{{item}}</option>
+            </select>
+        </div>
+</form>
+
+<hr>
+<form *ngIf="isAssigneeStatusO">
+    <div class="form-group">
+        <h3 for="exampleSelect2">Select Assignee</h3>
+        <select id="exampleSelect2" class="form-control" multiple>
+            <option *ngFor="let item of assigneeList; let i of index" value="{{i}}" (click)="selectUserToViewUpdates(item.AssigneeName)">{{item.AssigneeName}}</option>
+        </select>
+    </div>
+</form>
+
+<form *ngIf="isModifyTemplateEnable">
+        <div class="form-group">
+                <h3 for="exampleSelect2">Select Template</h3>
+                <select id="exampleSelect2" class="form-control" multiple>
+                    <option *ngFor="let item of templateNameForAssigneeName; let i of index" value="{{i}}" (click)="editTemplateDetails(item)">{{item}}</option>
+                </select>
+            </div>
+    </form>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Select Assignee</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+              <select id="exampleSelect1" class="form-control" #assigneeName>
+                  <option value=-1>Please select Assignee</option>
+                  <option *ngFor="let item of userNames; let i of index" value="{{i}}">{{item}}</option>
+              </select>
+            </div>
+          </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c(assigneeName)">Close</button>
+    </div>
+    </ng-template>
+
+
+    <div class="container" *ngIf="showAlert">
+        <div class="row">
+            <div class="col-12">
+                  <ngb-alert [type]="alertType.type" (close)="closeAlert()">{{alertType.message}}</ngb-alert>
+            </div>
+        </div>
+    </div>

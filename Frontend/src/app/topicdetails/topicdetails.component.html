@@ -1,0 +1,132 @@
+<header class="mb-3 mt-4">
+    <h1 class="my-0">Detail View</h1>
+    <hr class="mb-0 mt-3">
+</header>
+
+<form>
+<div class="row">
+    <div class="col-md-4">
+                    <div class="example-block">
+                        
+                            <div class="form-group">
+                                <label for="templateName">Select Template</label>
+                                <input id="templateName" class="form-control" type="text" placeholder="{{currentTemplateMetadaDetailsO.TemplateName}}" disabled="">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleSelect2">Program Name</label>
+                                <ul class="list-group">
+                                    <li class="list-group-item" *ngFor="let item of currentTemplateMetadaDetailsO.ProgramName">{{item}}</li>
+                                </ul>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleSelect3">Owner Group</label>
+                                <input id="exampleInput123" class="form-control" type="text" placeholder="{{currentTemplateMetadaDetailsO.OwnerGroup}}" disabled="">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInput1">Owner</label>
+                                <ul class="list-group">
+                                    <li class="list-group-item" *ngFor="let item of currentTemplateMetadaDetailsO.Owner">{{item}}</li>
+                                </ul>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="categoryName">Category</label>
+                                <input id="categoryName" class="form-control" type="text" name="input-disabled"  placeholder="{{currentTemplateO.CategoryName}}" disabled="">
+                            </div>
+                            <div class="form-group">
+                                <label for="areaName">Area</label>
+                                <textarea id="areaName" class="form-control" rows="2" placeholder="{{currentTemplateO.AreaName}}" disabled="" ></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="trainerName">Mentor/Trainer/Generic</label>
+                                <ul class="list-group">
+                                    <li class="list-group-item" *ngFor="let item of currentTemplateO.Mentor">{{item}}</li>
+                                </ul>
+                            </div>
+                            <div class="form-group ">
+                                <label for="dueDate">Due Date</label>
+                                <input id="dueDate" class="form-control" type="date" value="{{topicStatusHistoryId.DueDate}}" disabled="">
+                            </div>  
+                            <div class="form-group ">
+                                <label for="assignedDate">Assigned Date</label>
+                                <input id="assignedDate" class="form-control" type="date" value="2018-05-31" disabled="">
+                            </div>                         
+                        
+                    </div>
+      </div>
+      <div class="col-md-8" >
+          <div class="form-group">
+              <label for="exampleTextarea2">Topic Heading</label>
+              <textarea id="exampleTextarea2" class="form-control" rows="2"  disabled="" > {{currentTemplateO.TopicHeading}} </textarea>
+          </div>
+          <div class="form-group row">
+              <label  for="exampleTextarea4">Description</label>              
+              <textarea id="exampleTextarea4" class="form-control" disabled="" rows="5">{{currentTemplateO.TopicDescription}}</textarea>
+          </div>
+          <div class="table-wrapper-2">
+              <table class="table table-bordered">
+                  <thead>
+                      <tr>
+                          <th>#</th>
+                          <th>Submitter</th>
+                          <th>Submitter Date</th>
+                          <th>Description</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let item of topicStatusHistoryId.History">
+                          <td >{{item.seqno + 1}}</td>
+                          <td >{{item.submitter}}</td>
+                          <td >{{item.SubmittedDate}}</td>
+                          <td >{{item.Notes}}</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <div class="form-group row">
+              <label  for="exampleTextarea5">Comments</label>              
+              <textarea id="exampleTextarea5" class="form-control" name="exampleTextarea5" [(ngModel)]="commentDetails" rows="3"></textarea>
+              <button class="btn btn-primary" (click)=addComment()>Add</button>
+          </div>
+          <div class="form-group">
+            <label for="trainerName">Doc Location</label>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let item of currentTemplateO.DocLocation">{{item}}</li>
+            </ul>
+        </div>
+          <div class="form-group">
+              <label for="exampleSelect4">Status</label>
+              <select id="exampleSelect4" class="form-control" name="status" [(ngModel)] = "status" >
+                  <option  value="Planned" *ngIf="!(status === 'Start' || status === 'Completed')">Planned</option>
+                  <option  value="Start">Start</option>
+                  <option  value="Completed">Completed</option>
+               </select>
+          </div>
+          <div class="form-group ">
+            <label for="startDate" >Start Date</label>
+            <input id="startDate" class="form-control" type="date" value="{{topicStatusHistoryId.StartDate}}">
+        </div> 
+        <div class="form-group ">
+            <label for="completeDate" >Completion Date</label>
+            <input id="completeDate" class="form-control" type="date" value="{{topicStatusHistoryId.CompletionDate}}">
+        </div> 
+      </div>
+</div>
+<div class="form-group row">
+    <div class="offset-sm-2 col-sm-10">
+        <button class="btn btn-primary" type="submit" (click)="submitUpdate()">Submit</button>
+        <button class="btn btn-secondary" (click)="redirectBack()">Back</button>
+    </div>
+</div>
+</form>
+
+
+<div class="container" *ngIf="showAlert">
+    <div class="row">
+      <div class="col-12">
+          <ngb-alert [type]="alertType.type" (close)="closeAlert()">{{alertType.message}}</ngb-alert>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,53 @@
+<h1>
+  Login Page
+</h1>
+
+<hr>
+
+<form [formGroup]="loginFormControl"  (ngSubmit)="formSubmit(loginFormControl.value)">
+  <div class="container">
+    <div class="row custommain">
+      <label for="username" class="cols-12" >User Name</label>
+      <input type="text" class="form-control" name="username" id="username" placeholder="Enter your User Name here" formControlName="username"/>
+      <div *ngIf="Username.invalid&&(Username.dirty||Username.touched)" class="alert alert-danger">
+        <div *ngIf='Username.errors.required'>
+          User name is required 
+        </div>
+      </div> 
+    </div>
+
+    <div class="row custommain">
+      <label for="password" class="col-12" >Password</label>
+        <input type="text" class="form-control" name="password" id="password" placeholder="Enter your Password here" formControlName="password"/>
+        <div *ngIf="Password.invalid&&(Password.dirty||Password.touched)" class="alert alert-danger">
+          <div *ngIf="Password.errors.required">
+            Password is required 
+          </div>
+          <div *ngIf="Password.errors.minlength">
+            Password should be atleast 4 digits
+          </div>
+        </div>
+    </div>
+  
+
+    <div clas="row custommain">
+      <div class="col-12">
+        <button type="submit" [disabled]="loginFormControl.invalid" class="btn btn-primary btn-lg btn-block login-button">Login</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<hr>
+
+<div class="container" *ngIf="showAlert">
+  <div class="row">
+    <div class="col-12">
+        <ngb-alert [type]="alertType.type" (close)="closeAlert()">{{alertType.message}}</ngb-alert>
+    </div>
+  </div>
+</div>
+
+
+
+

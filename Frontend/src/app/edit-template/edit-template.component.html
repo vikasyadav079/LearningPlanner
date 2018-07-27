@@ -1,0 +1,161 @@
+      
+        <main class="content-wrap">
+                <div class="container">
+                      <div class="row">
+                          <article class="col-12">
+                              <header class="mb-3 mt-4">
+                                  <h1 class="my-0">SUMMARY</h1>
+                                  <hr class="mb-0 mt-3">
+                              </header>
+      
+                              <div class="table-wrapper-2 mb-3 mt-4">
+                                  <table class="table table-bordered">
+                                      <thead >
+                                          <tr >
+                                              <th *ngFor="let item of this.headers; index as i " id='{{i}}'>{{item}}</th>
+                                              <th></th>
+                                              <th></th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          <ng-container *ngFor="let tableBodySingleO of this.tableBodyO ; index as i;">
+                                                <tr *ngIf="!isEditable[i]; else notEditable" id='{{i}}' #td> 
+                                                    <td>{{tableBodySingleO.CategoryName}}</td>
+                                                    <td>{{tableBodySingleO.AreaName}}</td>
+                                                    <td>{{tableBodySingleO.TopicHeading}}</td>
+                                                    <td>{{tableBodySingleO.TopicDescription}}</td>
+                                                    <td>
+                                                        <ul>
+                                                            <li *ngFor="let mentorO of tableBodySingleO.Mentor">{{mentorO}}</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td>
+                                                        <ul>
+                                                            <li *ngFor="let docLocO of tableBodySingleO.DocLocation">{{docLocO}}</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td><button class="btn btn-primary btn-sm" (click)="EditTopic(i, tableBodySingleO.Mentor, tableBodySingleO.DocLocation)">Edit</button></td>
+                                                    <td><button class="btn btn-primary btn-sm" (click)="DeleteTopic(i, tableBodySingleO)">Delete</button></td>
+                                                </tr>
+                                                <ng-template #notEditable>
+                                                    <tr id='{{i}}' #td>
+                                                        <td contenteditable='true' name='categoryname'>{{tableBodySingleO.CategoryName}}</td>
+                                                        <td contenteditable='true' name='areaname'>{{tableBodySingleO.AreaName}}</td>
+                                                        <td contenteditable='true' name='topicname'>{{tableBodySingleO.TopicHeading}}</td>
+                                                        <td contenteditable='true' name='topicdesc'>{{tableBodySingleO.TopicDescription}}</td>
+                                                        <td>
+                                                            <ul>
+                                                                <li *ngFor="let mentorO of tableBodySingleO.Mentor">{{mentorO}}</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td>
+                                                            <ul>
+                                                                <li *ngFor="let docLocO of tableBodySingleO.DocLocation">{{docLocO}}</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td><button class="btn btn-primary btn-sm" (click)="EditTopic(i, tableBodySingleO.Mentor, tableBodySingleO.DocLocation)">Cancel</button></td>
+                                                        <td><button class="btn btn-primary btn-sm" (click)="SaveTopicEdit(i, td, tableBodySingleO)">Save</button></td>
+                                                    </tr>
+                                                </ng-template>
+                                          </ng-container>
+                                      </tbody>
+                                  </table>
+                              </div>                    
+                          </article>
+                      </div>
+                  </div>
+              </main>
+
+              <hr>
+              <div class="container">
+                  <div class="row">
+                      <div class="col-12">
+                          <button class="btn btn-primary" (click)="addNewTopic()">Add new topic category</button>
+                      </div>
+                  </div>
+              </div>
+              <hr>
+
+
+            <div class="form-group" *ngIf="isModifyMentorEnable">
+                <h3 for="mentorNameInput">Mentor List</h3>
+                <input id="mentorNameInput" class="form-control" name="mentorNameInput" [(ngModel)]="mentorOSingle" type="text"> 
+                <ul class="list-group bottommargin" >
+                    <li class="list-group-item" *ngFor="let item1 of mentorListByCurrentTopic" (click)="currentMentor(item1)"> {{item1}}</li>
+                </ul>
+                <div class="inline">
+                        <button class="btn btn-primary rightmargin" (click)="addMentor()" >Add</button>
+                        <button class="btn btn-primary"  (click)="deleteMentor()">Delete</button>
+                        <button class="btn btn-primary"  (click)="saveMentor()">Update</button>
+                </div>
+            </div>    
+            <div class="form-group" *ngIf="isModifyDocListEnable">
+                <h3 for="docLocNameInput">Documents List</h3>
+                <input id="docLocNameInput" class="form-control" name="docLocNameInput"  [(ngModel)]="docLocationO" type="text"> 
+                <ul class="list-group bottommargin" >
+                    <li class="list-group-item" *ngFor="let item of docListByCurrentTopic" (click)="currentDocLocation(item)"> {{item}}</li>
+                </ul>
+                <div class="inline">
+                        <button class="btn btn-primary rightmargin" (click)="addDocLocation()" >Add</button>
+                        <button class="btn btn-primary"  (click)="deleteDocLocation()">Delete</button>
+                        <button class="btn btn-primary"  (click)="saveDocLocation()">Update</button>
+                </div>
+            </div>     
+            
+            <div class="container" *ngIf="showAddNewTopicModule">
+                <form >
+                    <div class="form-group">
+                        <label for="categoryNameId">Category Name</label>
+                        <input id="categoryNameId" class="form-control" type="text" placeholder="Enter Category" name="categoryName" #categoryName>
+                    </div>
+                    <div class="form-group">
+                        <label for="areaNameId">Area Name</label>
+                        <input id="areaNameId" class="form-control" type="text" placeholder="Enter Area"  name="areaName" #areaName>
+                    </div>
+                    <div class="form-group">
+                        <label for="topicNameId">Topic Heading</label>
+                        <input id="topicNameId" class="form-control" type="text" placeholder="Enter Topic Heading"  name="topicHeading" #topicHeading>
+                    </div>
+                    <div class="form-group">
+                        <label for="topicDescriptionId">Topic Description</label>
+                        <textarea id="topicDescriptionId" class="form-control" rows="3"  name="topicDescription" #topicDesc></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="mentorNameInput">Mentor List</label>
+                        <input id="mentorNameInput" class="form-control" name="mentorNameInput" [(ngModel)]="mentorOSingle" type="text"> 
+                        <ul class="list-group bottommargin" >
+                            <li class="list-group-item" *ngFor="let item1 of mentorListByNewTopic" (click)="currentMentor(item1)"> {{item1}}</li>
+                        </ul>
+                        <div class="inline">
+                                <button class="btn btn-primary rightmargin" (click)="addMentor()" >Add</button>
+                                <button class="btn btn-primary"  (click)="deleteMentor()">Delete</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="docLocNameInput">Documents List</label>
+                        <input id="docLocNameInput" class="form-control" name="docLocNameInput"  [(ngModel)]="docLocationO" type="text"> 
+                        <ul class="list-group bottommargin" >
+                            <li class="list-group-item" *ngFor="let item of docListByNewTopic" (click)="currentDocLocation(item)"> {{item}}</li>
+                        </ul>
+                        <div class="inline">
+                                <button class="btn btn-primary rightmargin" (click)="addDocLocation()" >Add</button>
+                                <button class="btn btn-primary"  (click)="deleteDocLocation()">Delete</button>
+                        </div>
+                    </div>             
+                    <button class="btn btn-primary" type="submit" (click)="submitNewTopicDetails(categoryName.value, areaName.value, topicHeading.value, topicDesc.value)">Submit</button>
+                </form>
+            </div>
+
+            <div class="container" *ngIf="showAlert">
+                <div class="row">
+                    <div class="col-12">
+                        <ngb-alert [type]="alertType.type" (close)="closeAlert()">
+                            <p >{{alertType.message}}</p>
+                        </ngb-alert>
+                    </div>
+                </div>
+            </div>
+
+
+            
+      

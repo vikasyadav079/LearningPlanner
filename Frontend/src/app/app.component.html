@@ -1,0 +1,23 @@
+<div class="container">
+
+    <div class="row main"> <!--Header-->
+        <app-heading></app-heading>
+    </div><!--Header end-->
+
+
+    <router-outlet></router-outlet>
+
+
+
+  
+    <app-loader *ngIf='this.showloader'></app-loader>
+    
+
+</div>
+
+<div class="row"> <!--footer-->
+    <app-footer></app-footer>
+</div><!--footer end-->
+
+
+

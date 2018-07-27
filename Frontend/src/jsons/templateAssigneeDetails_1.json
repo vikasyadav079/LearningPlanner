@@ -1,0 +1,155 @@
+{
+        "TemplateName" : "MCSS_PERU_Template",
+        "TemplateDetails" : [
+                {
+                        "CategoryName" : "Account specific training1",
+                        "CategoryDetails" : [
+                                {
+                                        "AreaName" : "Account Overview11",
+                                        "AreaDetails" : [
+                                                {
+                                                        "TopicHeading" : "Account and Org Structure111",
+                                                        "DueDate" : "2018-06-23",
+                                                        "Status" : "Start",
+                                                        "Mentor" : [
+                                                                "Nilesh Patil",
+                                                                "Kali Rath"
+                                                        ],
+                                                        "DocLocation" : [
+                                                                "<Location1>",
+                                                                "<Location2>"
+                                                        ],
+                                                        "Comments" : "Please Start Learning",
+                                                        "TopiceDescription" : "This is for AMSS Cricket  account and Argentina account"
+                                                },
+                                                {
+                                                        "TopicHeading" : "Account and Org Structure112",
+                                                        "DueDate" : "2018-06-23",
+                                                        "Status" : "Start",
+                                                        "Mentor" : [
+                                                                "Nilesh Patil",
+                                                                "Kali Rath"
+                                                        ],
+                                                        "DocLocation" : [
+                                                                "<Location1>",
+                                                                "<Location2>"
+                                                        ],
+                                                        "Comments" : "Please Start Learning",
+                                                        "TopiceDescription" : "This is for AMSS Cricket  account and Argentina account"
+                                                }
+                                        ]
+                                },
+                                                                {
+                                        "AreaName" : "Account Overview12",
+                                        "AreaDetails" : [
+                                                {
+                                                        "TopicHeading" : "Account and Org Structure121",
+                                                        "DueDate" : "2018-06-23",
+                                                        "Status" : "Start",
+                                                        "Mentor" : [
+                                                                "Nilesh Patil",
+                                                                "Kali Rath"
+                                                        ],
+                                                        "DocLocation" : [
+                                                                "<Location1>",
+                                                                "<Location2>"
+                                                        ],
+                                                        "Comments" : "Please Start Learning",
+                                                        "TopiceDescription" : "This is for AMSS Cricket  account and Argentina account"
+                                                },
+                                                {
+                                                        "TopicHeading" : "Account and Org Structure122",
+                                                        "DueDate" : "2018-06-23",
+                                                        "Status" : "Start",
+                                                        "Mentor" : [
+                                                                "Nilesh Patil",
+                                                                "Kali Rath"
+                                                        ],
+                                                        "DocLocation" : [
+                                                                "<Location1>",
+                                                                "<Location2>"
+                                                        ],
+                                                        "Comments" : "Please Start Learning",
+                                                        "TopiceDescription" : "This is for AMSS Cricket  account and Argentina account"
+                                                }
+                                        ]
+                                }
+                        ]
+                },
+                                {
+                        "CategoryName" : "Account specific training2",
+                        "CategoryDetails" : [
+                                {
+                                        "AreaName" : "Account Overview21",
+                                        "AreaDetails" : [
+                                                {
+                                                        "TopicHeading" : "Account and Org Structure211",
+                                                        "DueDate" : "2018-06-23",
+                                                        "Status" : "Start",
+                                                        "Mentor" : [
+                                                                "Nilesh Patil",
+                                                                "Kali Rath"
+                                                        ],
+                                                        "DocLocation" : [
+                                                                "<Location1>",
+                                                                "<Location2>"
+                                                        ],
+                                                        "Comments" : "Please Start Learning",
+                                                        "TopiceDescription" : "This is for AMSS Cricket  account and Argentina account"
+                                                },
+                                                {
+                                                        "TopicHeading" : "Account and Org Structure212",
+                                                        "DueDate" : "2018-06-23",
+                                                        "Status" : "Start",
+                                                        "Mentor" : [
+                                                                "Nilesh Patil",
+                                                                "Kali Rath"
+                                                        ],
+                                                        "DocLocation" : [
+                                                                "<Location1>",
+                                                                "<Location2>"
+                                                        ],
+                                                        "Comments" : "Please Start Learning",
+                                                        "TopiceDescription" : "This is for AMSS Cricket  account and Argentina account"
+                                                }
+                                        ]
+                                },
+                                                                {
+                                        "AreaName" : "Account Overview22",
+                                        "AreaDetails" : [
+                                                {
+                                                        "TopicHeading" : "Account and Org Structure221",
+                                                        "DueDate" : "2018-06-23",
+                                                        "Status" : "Start",
+                                                        "Mentor" : [
+                                                                "Nilesh Patil",
+                                                                "Kali Rath"
+                                                        ],
+                                                        "DocLocation" : [
+                                                                "<Location1>",
+                                                                "<Location2>"
+                                                        ],
+                                                        "Comments" : "Please Start Learning",
+                                                        "TopiceDescription" : "This is for AMSS Cricket  account and Argentina account"
+                                                },
+                                                {
+                                                        "TopicHeading" : "Account and Org Structure222",
+                                                        "DueDate" : "2018-06-23",
+                                                        "Status" : "Start",
+                                                        "Mentor" : [
+                                                                "Nilesh Patil",
+                                                                "Kali Rath"
+                                                        ],
+                                                        "DocLocation" : [
+                                                                "<Location1>",
+                                                                "<Location2>"
+                                                        ],
+                                                        "Comments" : "Please Start Learning",
+                                                        "TopiceDescription" : "This is for AMSS Cricket  account and Argentina account"
+                                                }
+                                        ]
+                                }
+                        ]
+                }
+        ]
+}

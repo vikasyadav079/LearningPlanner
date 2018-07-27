@@ -1,0 +1,71 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+Frontend/dist
+Frontend/dist-server
+Frontend/tmp
+Frontend/out-tsc
+
+Backend/dist
+Backend/dist-server
+Backend/tmp
+Backend/out-tsc
+
+# dependencies
+Frontend/node_modules
+
+Backend/node_modules
+
+# IDEs and editors
+Frontend/.idea
+Frontend/.project
+Frontend/.classpath
+Frontend/.c9/
+Frontend/*.launch
+Frontend/.settings/
+Frontend/*.sublime-workspace
+
+Backend/.idea
+Backend/.project
+Backend/.classpath
+Backend/.c9/
+Backend/*.launch
+Backend/.settings/
+Backend/*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+Frontend/.sass-cache
+Frontend/connect.lock
+Frontend/coverage
+Frontend/libpeerconnection.log
+Frontend/npm-debug.log
+Frontend/yarn-error.log
+Frontend/testem.log
+Frontend/typings
+
+Backend/.sass-cache
+Backend/connect.lock
+Backend/coverage
+Backend/libpeerconnection.log
+Backend/npm-debug.log
+Backend/yarn-error.log
+Backend/testem.log
+Backend/typings
+
+# e2e
+Frontend/e2e/*.js
+Frontend/e2e/*.map
+
+Backend/e2e/*.js
+Backend/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db

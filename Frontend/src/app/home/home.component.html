@@ -1,0 +1,35 @@
+      
+        <main class="content-wrap">
+          <div class="container">
+                <div class="row">
+                    <article class="col-12">
+                        <header class="mb-3 mt-4">
+                            <h1 class="my-0">SUMMARY</h1>
+                            <hr class="mb-0 mt-3">
+                        </header>
+
+                        <div class="table-wrapper-2 mb-3 mt-4">
+                            <table class="table table-bordered">
+                                <thead >
+                                    <tr >
+                                        <th *ngFor="let item of this.headers; index as i " id='{{i}}'>{{item}}</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let tableBodySingleO of this.tableBodyO ; index as i;" id='{{i}}' #td>                                        
+                                        <td >{{tableBodySingleO.TemplateName}}</td>
+                                        <td>{{tableBodySingleO.CategoryName}}</td>
+                                        <td>{{tableBodySingleO.AreaName}}</td>
+                                        <td>{{tableBodySingleO.TopicName}}</td>
+                                        <td>{{tableBodySingleO.DueDate}}</td>
+                                        <td>{{tableBodySingleO.Status}}</td>
+                                        <td><button class="btn btn-primary btn-sm" (click)="DetailsPage(tableBodySingleO)">Details</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>                    
+                    </article>
+                </div>
+            </div>
+        </main>

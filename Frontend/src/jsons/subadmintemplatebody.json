@@ -1,0 +1,23 @@
+{
+	"Templates" : [
+		{
+			"name" : "Template1",
+			"created_at": "2018-06-20",
+			"updated_at": "2018-06-20",
+			"assigned_to": ["Vikas Yadav", "Vikas1 Yadav"],
+			"owner_group": ["MCSS"],
+			"owner": ["Owner1", "Owner2"],
+			"description":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede "
+		},
+
+		{
+			"name" : "Template2",
+			"created_at": "2018-06-21",
+			"updated_at": "2018-06-21",
+			"assigned_to": ["Vikas2 Yadav", "Vikas3 Yadav"],
+			"owner_group": ["MCSS", "AMSS"],
+			"owner": ["Owner3", "Owner4"],
+			"description":"Lorem ipsum dsfsdfsfd dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede "
+		}
+	]
+}

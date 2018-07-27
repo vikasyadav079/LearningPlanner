@@ -1,0 +1,10 @@
+{
+	"AdminTableHeading" : [
+		"User Name", 
+		"Email", 
+		"Role",
+		"Creation Date",
+		"Updation Date",
+		"IsActive"
+	]
+}
